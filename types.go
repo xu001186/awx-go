@@ -338,9 +338,24 @@ type JobTemplate struct {
 	VaultCredential       interface{} `json:"vault_credential"`
 }
 
+// WorkflowJobTemplate represents the awx api job template.
+type WorkflowJobTemplate struct {
+	JobTemplate
+}
+
+// WorkflowJobLaunch representsthe awx api workflow job launch.
+type WorkflowJobLaunch struct {
+	JobLaunchBase
+	WorkflowJob int `json:"workflow_job"`
+}
+
 // JobLaunch represents the awx api job launch.
 type JobLaunch struct {
-	Job                     int               `json:"job"`
+	Job int `json:"job"`
+}
+
+// JobLaunchBase represents the awx api job launch for both workflow and playbook.
+type JobLaunchBase struct {
 	IgnoredFields           map[string]string `json:"ignored_fields"`
 	ID                      int               `json:"id"`
 	Type                    string            `json:"type"`

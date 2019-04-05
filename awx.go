@@ -16,15 +16,16 @@ var mandatoryFields = []string{}
 type AWX struct {
 	client *Client
 
-	PingService           *PingService
-	InventoriesService    *InventoriesService
-	JobService            *JobService
-	JobTemplateService    *JobTemplateService
-	ProjectService        *ProjectService
-	ProjectUpdatesService *ProjectUpdatesService
-	UserService           *UserService
-	GroupService          *GroupService
-	HostService           *HostService
+	PingService                *PingService
+	InventoriesService         *InventoriesService
+	JobService                 *JobService
+	JobTemplateService         *JobTemplateService
+	WorkflowJobTemplateService *WorkflowJobTemplateService
+	ProjectService             *ProjectService
+	ProjectUpdatesService      *ProjectUpdatesService
+	UserService                *UserService
+	GroupService               *GroupService
+	HostService                *HostService
 }
 
 // Client implement http client.
@@ -89,6 +90,9 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) *AWX {
 			client: awxClient,
 		},
 		JobTemplateService: &JobTemplateService{
+			client: awxClient,
+		},
+		WorkflowJobTemplateService: &WorkflowJobTemplateService{
 			client: awxClient,
 		},
 		ProjectService: &ProjectService{
